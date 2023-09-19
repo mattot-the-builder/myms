@@ -51,4 +51,14 @@ class Staff extends Model implements HasMedia
     {
         return $this->hasMany(LeaveRequest::class);
     }
+
+    public function expenseClaims(): HasMany
+    {
+        return $this->hasMany(ExpenseClaim::class);
+    }
+
+    public function overtimeClaims(): HasMany
+    {
+        return $this->hasMany(OvertimeClaim::class);
+    }
 }

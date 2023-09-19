@@ -29,8 +29,7 @@ class MileageClaimResource extends Resource
                 Forms\Components\Section::make('metadata')
                     ->schema([
                         Forms\Components\Select::make('staff_id')
-                            ->label('Staff')
-                            ->options(Staff::all()->pluck('name', 'id'))
+                            ->relationship('staff', 'name')
                             ->required(),
                         Forms\Components\Select::make('status')
                             ->options([

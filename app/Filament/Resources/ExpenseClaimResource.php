@@ -2,11 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LeaveRequestResource\Pages;
-use App\Filament\Resources\LeaveRequestResource\RelationManagers;
-use App\Models\LeaveRequest;
-use App\Models\Staff;
-use Carbon\Carbon;
+use App\Filament\Resources\ExpenseClaimResource\Pages;
+use App\Filament\Resources\ExpenseClaimResource\RelationManagers;
+use App\Models\ExpenseClaim;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
@@ -18,11 +16,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class LeaveRequestResource extends Resource
+class ExpenseClaimResource extends Resource
 {
-    protected static ?string $model = LeaveRequest::class;
+    protected static ?string $model = ExpenseClaim::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
     protected static ?string $navigationGroup = 'MYMS e-love';
 
     public static function form(Form $form): Form
@@ -43,31 +41,41 @@ class LeaveRequestResource extends Resource
                             ])
                             ->required(),
                     ])->columns(2),
-
-                Forms\Components\Section::make('Details')
+                Forms\Components\Section::make('Items')
                     ->schema([
-                        Forms\Components\DatePicker::make('start_date')
-                            ->required(),
-                        Forms\Components\DatePicker::make('end_date')
-                            ->required()
+                        Forms\Components\Repeater::make('items')
+                            ->schema([
+                                Forms\Components\DatePicker::make('date')
+                                    ->required(),
+                                Forms\Components\TextInput::make('amount')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('details')
+                                    ->required()
+                                    ->columnSpanFull(),
+                                SpatieMediaLibraryFileUpload::make('expense_item')
+                                    ->label('Attachment')
+                                    ->collection('expense_items')
+                                    ->columnSpanFull(),
+                            ])
+                            ->columns(2)
+                            ->itemLabel(fn (array $state): ?string => $state['details'] ?? null)
+                            ->collapsible()
+                            ->columnSpanFull()
                             ->live()
                             ->afterStateUpdated(function (Get $get, Set $set) {
-                                $daysDiff = Carbon::parse($get('end_date'))->diffInDays(Carbon::parse($get('start_date')));
-                                $set('total_leave', $daysDiff);
+                                $total_claim = 0;
+                                foreach ($get('items') as $item) {
+                                    $total_claim += $item['amount'];
+                                }
+                                $set('total_claim', $total_claim);
                             }),
-                        Forms\Components\TextInput::make('total_leave')
-                            ->readOnly()
-                            ->required()
-                            ->suffix('days')
-                            ->numeric(),
-                        Forms\Components\RichEditor::make('reasons')
-                            ->required()
-                            ->columnSpanFull(),
-                        SpatieMediaLibraryFileUpload::make('leave_request')
-                            ->label('Attachment')
-                            ->columnSpanFull()
-                            ->collection('leave_requests'),
-                    ])->columns(2),
+
+                    ]),
+                Forms\Components\TextInput::make('total_claim')
+                    ->required()
+                    ->readOnly()
+                    ->numeric(),
             ]);
     }
 
@@ -76,19 +84,11 @@ class LeaveRequestResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('staff.name')
-                    ->label('Staff')
                     ->numeric()
-                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('start_date')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('end_date')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('total_leave')
+                Tables\Columns\TextColumn::make('total_claim')
                     ->numeric()
-                    ->suffix(' days')
+                    ->money('myr')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
@@ -131,10 +131,10 @@ class LeaveRequestResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLeaveRequests::route('/'),
-            'create' => Pages\CreateLeaveRequest::route('/create'),
-            'view' => Pages\ViewLeaveRequest::route('/{record}'),
-            'edit' => Pages\EditLeaveRequest::route('/{record}/edit'),
+            'index' => Pages\ListExpenseClaims::route('/'),
+            'create' => Pages\CreateExpenseClaim::route('/create'),
+            'view' => Pages\ViewExpenseClaim::route('/{record}'),
+            'edit' => Pages\EditExpenseClaim::route('/{record}/edit'),
         ];
     }
 }
