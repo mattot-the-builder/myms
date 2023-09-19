@@ -5,8 +5,13 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\LeaveRequestResource\Pages;
 use App\Filament\Resources\LeaveRequestResource\RelationManagers;
 use App\Models\LeaveRequest;
+use App\Models\Staff;
+use Carbon\Carbon;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,27 +22,53 @@ class LeaveRequestResource extends Resource
 {
     protected static ?string $model = LeaveRequest::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationGroup = 'MYMS e-love';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('staff_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('start_date')
-                    ->required(),
-                Forms\Components\DatePicker::make('end_date')
-                    ->required(),
-                Forms\Components\TextInput::make('total_leave')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\Textarea::make('reasons')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
+                Forms\Components\Section::make('metadata')
+                    ->schema([
+                        Forms\Components\Select::make('staff_id')
+                            ->label('Staff')
+                            ->options(Staff::all()->pluck('name', 'id'))
+                            ->required(),
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'approved' => 'Approved',
+                                'pending' => 'Pending',
+                                'rejected' => 'Rejected',
+                                'claimed' => 'Claimed'
+                            ])
+                            ->required(),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Details')
+                    ->schema([
+                        Forms\Components\DatePicker::make('start_date')
+                            ->required(),
+                        Forms\Components\DatePicker::make('end_date')
+                            ->required()
+                            ->live()
+                            ->afterStateUpdated(function (Get $get, Set $set) {
+                                $daysDiff = Carbon::parse($get('end_date'))->diffInDays(Carbon::parse($get('start_date')));
+                                $set('total_leave', $daysDiff);
+                            }),
+                        Forms\Components\TextInput::make('total_leave')
+                            ->readOnly()
+                            ->required()
+                            ->suffix('days')
+                            ->numeric(),
+                        Forms\Components\RichEditor::make('reasons')
+                            ->required()
+                            ->columnSpanFull(),
+                        SpatieMediaLibraryFileUpload::make('leave_request')
+                            ->label('Attachment')
+                            ->columnSpanFull()
+                            ->collection('leave_requests'),
+                    ])->columns(2),
             ]);
     }
 
@@ -45,8 +76,10 @@ class LeaveRequestResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('staff_id')
+                Tables\Columns\TextColumn::make('staff.name')
+                    ->label('Staff')
                     ->numeric()
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('start_date')
                     ->date()
@@ -58,7 +91,13 @@ class LeaveRequestResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'claimed' => 'gray',
+                        'approved' => 'success',
+                        'rejected' => 'danger',
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -81,14 +120,14 @@ class LeaveRequestResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -97,5 +136,5 @@ class LeaveRequestResource extends Resource
             'view' => Pages\ViewLeaveRequest::route('/{record}'),
             'edit' => Pages\EditLeaveRequest::route('/{record}/edit'),
         ];
-    }    
+    }
 }

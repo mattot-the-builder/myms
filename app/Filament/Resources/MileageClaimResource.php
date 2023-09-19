@@ -26,20 +26,32 @@ class MileageClaimResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('staff_id')
-                    ->label('Staff')
-                    ->options(Staff::all()->pluck('name', 'id'))
-                    ->required(),
-                    Forms\Components\Section::make('Trip Details')
-                        ->schema([
-                    Forms\Components\DatePicker::make('trip_date')
-                        ->required(),
-                    Forms\Components\TextInput::make('trip_name')
-                        ->required(),
-                    Forms\Components\TextInput::make('starting_location')
-                        ->required(),
-                    Forms\Components\TextInput::make('destination')
-                        ->required(),
+                Forms\Components\Section::make('metadata')
+                    ->schema([
+                        Forms\Components\Select::make('staff_id')
+                            ->label('Staff')
+                            ->options(Staff::all()->pluck('name', 'id'))
+                            ->required(),
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'approved' => 'Approved',
+                                'pending' => 'Pending',
+                                'rejected' => 'Rejected',
+                                'claimed' => 'Claimed'
+                            ])
+                            ->required(),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Trip Details')
+                    ->schema([
+                        Forms\Components\DatePicker::make('trip_date')
+                            ->required(),
+                        Forms\Components\TextInput::make('trip_name')
+                            ->required(),
+                        Forms\Components\TextInput::make('starting_location')
+                            ->required(),
+                        Forms\Components\TextInput::make('destination')
+                            ->required(),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Claim Details')
@@ -56,14 +68,6 @@ class MileageClaimResource extends Resource
                             ->required()
                             ->prefix('RM')
                             ->numeric(),
-                        Forms\Components\Select::make('status')
-                            ->options([
-                                'approved' => 'Approved',
-                                'pending' => 'Pending',
-                                'rejected' => 'Rejected',
-                                'claimed' => 'Claimed'
-                            ])
-                            ->required(),
                         SpatieMediaLibraryFileUpload::make('mileage_claim')
                             ->label('Attachment')
                             ->columnSpanFull()
@@ -77,9 +81,9 @@ class MileageClaimResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('staff_id')
+                Tables\Columns\TextColumn::make('staff.name')
                     ->label('Staff')
-                    ->numeric()
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('trip_name')
                     ->searchable(),

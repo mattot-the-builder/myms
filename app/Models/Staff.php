@@ -46,4 +46,9 @@ class Staff extends Model implements HasMedia
     {
         return $this->hasMany(MileageClaim::class);
     }
+
+    public function leaveRequests(): HasMany
+    {
+        return $this->hasMany(LeaveRequest::class);
+    }
 }
