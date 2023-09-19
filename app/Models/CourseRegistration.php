@@ -12,7 +12,7 @@ class CourseRegistration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'course_id', 'name', 'ic_number', 'contact', 'company_name', 'address', 'is_sponsored', 'competency', 'position', 'payment_id', 'status'
+        'user_id', 'course_id', 'name', 'ic_number', 'contact', 'company_name', 'address', 'is_sponsored', 'competency', 'position', 'payment_id', 'is_sponsored'
     ];
 
     public function user(): BelongsTo

@@ -38,8 +38,10 @@ class CourseResource extends Resource
                         Forms\Components\DatePicker::make('date')
                             ->required(),
                         Forms\Components\TimePicker::make('started_at')
+                            ->format('H:m A')
                             ->required(),
                         Forms\Components\TimePicker::make('ended_at')
+                            ->format('H:m A')
                             ->required(),
                     ])->columns(3),
             ]);
