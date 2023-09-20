@@ -14,7 +14,7 @@ return new class () extends Migration {
             $table->id();
             $table->foreignId('course_registration_id')->constrained()->cascadeOnDelete();
             $table->string('payment_id')->nullable();
-            $table->enum('payment_method', ['fpx', 'cash'])->nullable();
+            $table->enum('payment_method', ['fpx', 'card'])->nullable();
             $table->string('payment_status')->nullable();
             $table->timestamps();
         });
