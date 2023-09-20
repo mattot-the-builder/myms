@@ -25,7 +25,7 @@ class CourseRegistrationResource extends Resource
 {
     protected static ?string $model = CourseRegistration::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-plus-circle';
 
     public static function form(Form $form): Form
     {
@@ -106,6 +106,7 @@ class CourseRegistrationResource extends Resource
                                         ->required(),
                                 ])->columns(2)
                         ]),
+
 
                 ])->columnSpanFull(),
 

@@ -26,7 +26,7 @@ class UserPanelProvider extends PanelProvider
             ->id('dashboard')
             ->path('dashboard')
             ->colors([
-                'primary' => Color::Emerald,
+                'primary' => Color::Amber,
             ])
             ->font('Poppins')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
