@@ -5,7 +5,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
             <option selected="" value="null" disabled>Select Course</option>
             @foreach ($courses as $course)
-            <option value="{{ $course->id }}">
+            <option wire:click="updateCourse({{ $course->id }})" value="{{ $course->id }}">
                 {{ $course->name }}
             </option>
             @endforeach
@@ -13,26 +13,16 @@
         </select>
 
     </div>
-    <select wire:model="course_id">
-        <option value="">Select a course</option>
-        <option value="1">Course 1</option>
-        <option value="2">Course 2</option>
-        <option value="3">Course 3</option>
-    </select>
-
-    <input type="text" wire:model="course_id" placeholder="Enter course ID">
-    {{ $course_id }}
-
 
     <div class="flex-wrap">
         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Date : {{ $course->date }}
+            Date : {{ $course_date }}
         </span>
         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Start : {{ $course->started_at }}
+            Start : {{ $course_started_at }}
         </span>
         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            End : {{ $course->ended_at }}
+            End : {{ $course_ended_at }}
         </span>
     </div>
 </div>

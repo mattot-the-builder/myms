@@ -14,7 +14,7 @@
                     <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Select Course</h2>
                     <form action="{{ route('course.store') }}" method="POST" class="max-w-2xl mx-auto">
                         @csrf
-                        <livewire:course-register :courses="$courses" />
+                        <livewire:course-register />
                         {{-- <div --}}
                         {{--     class="mb-6 grid gap-4 sm:grid-cols-2 sm:gap-6 border-b border-gray-900/10  dark:border-gray-600 pb-12"> --}}
                         {{--     <div> --}}

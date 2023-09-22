@@ -20,9 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoice', [UserController::class, 'invoice'])->name('course.invoice');
     Route::post('/checkout/{id?}', [UserController::class, 'checkout'])->name('invoice.checkout');
     Route::get('/payment/success', [UserController::class, 'success'])->name('payment.success');
+
+    Route::get('/course-registration/{id?}', [UserController::class, 'viewRegistration'])->name('course-registration.view');
 });
 
 require __DIR__.'/auth.php';

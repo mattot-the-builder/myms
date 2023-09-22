@@ -18,6 +18,19 @@ class UserController extends Controller
         return view('user.course.index');
     }
 
+    public function indexCourseRegistration()
+    {
+
+        $course_registrations = auth()->user()->courseRegistrations()->simplePaginate(5);
+        return view('dashboard', compact('course_registrations'));
+    }
+
+    public function viewRegistration($id)
+    {
+        $course_registration = CourseRegistration::find($id);
+        return view('user.register.view', compact('course_registration'));
+    }
+
     // register form
     public function registerForm()
     {
