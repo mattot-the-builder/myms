@@ -14,36 +14,38 @@
                     <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Select Course</h2>
                     <form action="{{ route('course.store') }}" method="POST" class="max-w-2xl mx-auto">
                         @csrf
-                        <div
-                            class="mb-6 grid gap-4 sm:grid-cols-2 sm:gap-6 border-b border-gray-900/10  dark:border-gray-600 pb-12">
-                            <div>
-                                <label for="course_id"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
-                                <select id="course_id" name="course_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option selected="">Select Course</option>
-                                    @foreach ($courses as $course)
-                                        <option value="{{ $course->id }}">
-                                            {{ $course->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-
-
-                            <div class="flex-wrap">
-                                <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Date : {{ $course->date }}
-                                </span>
-                                <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Start : {{ $course->started_at }}
-                                </span>
-                                <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    End : {{ $course->ended_at }}
-                                </span>
-                            </div>
-                        </div>
+                        <livewire:course-register :courses="$courses" />
+                        {{-- <div --}}
+                        {{--     class="mb-6 grid gap-4 sm:grid-cols-2 sm:gap-6 border-b border-gray-900/10  dark:border-gray-600 pb-12"> --}}
+                        {{--     <div> --}}
+                        {{--         <label for="course_id" --}}
+                        {{--             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label> --}}
+                        {{--         <select id="course_id" name="course_id" --}}
+                        {{--             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"> --}}
+                        {{--             <option selected="">Select Course</option> --}}
+                        {{--             @foreach ($courses as $course) --}}
+                        {{--                 {{ dd($course->id) }} --}}
+                        {{--                 <option value="{{ $course->id }}"> --}}
+                        {{--                     {{ $course->name }} --}}
+                        {{--                 </option> --}}
+                        {{--             @endforeach --}}
+                        {{--         </select> --}}
+                        {{-- --}}
+                        {{--     </div> --}}
+                        {{-- --}}
+                        {{-- --}}
+                        {{--     <div class="flex-wrap"> --}}
+                        {{--         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> --}}
+                        {{--             Date : {{ $course->date }} --}}
+                        {{--         </span> --}}
+                        {{--         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> --}}
+                        {{--             Start : {{ $course->started_at }} --}}
+                        {{--         </span> --}}
+                        {{--         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> --}}
+                        {{--             End : {{ $course->ended_at }} --}}
+                        {{--         </span> --}}
+                        {{--     </div> --}}
+                        {{-- </div> --}}
                         <div
                             class="mb-6 grid gap-4 sm:grid-cols-2 sm:gap-6 border-b border-gray-900/10  dark:border-gray-600 pb-12">
                             <h2 class="sm:col-span-2 text-xl font-bold text-gray-900 dark:text-white">Personal

@@ -8,7 +8,7 @@ use Livewire\Component;
 class CourseRegister extends Component
 {
     public $courses;
-    public $course_id = 2;
+    public $course_id = 1;
 
 
     public function mount()

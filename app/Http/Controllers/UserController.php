@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\CourseRegistration;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -47,5 +48,75 @@ class UserController extends Controller
             dd('failed');
         }
     }
+
+    public function checkout($id)
+    {
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $invoice = Invoice::find($id);
+
+        $session = $stripe->checkout->sessions->create([
+
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'myr',
+                    'unit_amount' => $invoice->courseRegistration->course->fee * 100,
+                    'product_data' => [
+                        'name' => $invoice->courseRegistration->course->name,
+                        'images' => ['https://picsum.photos/600'],
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'customer_email' => auth()->user()->email,
+            'client_reference_id' => $invoice->id,
+            'mode' => 'payment',
+            'success_url' => env('APP_URL') . '/payment/success?session_id={CHECKOUT_SESSION_ID}',
+            'payment_method_types' => [request()->payment_method],
+        ]);
+
+        return redirect()->away($session->url);
+
+        header("HTTP/1.1 303 See Other");
+        header("Location: " . $session->url);
+
+    }
+
+    public function success()
+    {
+        // Initialize Stripe with your secret key
+
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
+        $session = $stripe->checkout->sessions->retrieve(request()->query('session_id'));
+
+        $invoice = auth()->user()->courseRegistrations->last()->invoice->first();
+        $invoice->payment_id = $session->id;
+        $invoice->payment_method = $session->payment_method_types[0];
+
+        $invoice_data = [
+            'id' => $invoice->id,
+            'date' => $invoice->created_at,
+            'user_name' => $invoice->courseRegistration->user->name,
+            'user_address' => $invoice->courseRegistration->address,
+            'course_name' => $invoice->courseRegistration->course->name,
+            'fee' => $invoice->courseRegistration->course->fee,
+            'payment_method' => $invoice->payment_method,
+        ];
+
+        // $receipt_mail = new Receipt(compact('invoice_data'));
+
+        // Mail::to(auth()->user()->email)->send($receipt_mail);
+
+        if ($invoice->save()) {
+            return view('user.register.receipt', compact('session', 'invoice'));
+        } else {
+            dd('failed');
+        }
+
+        // Handle your application logic based on the payment status
+        // Redirect to a thank-you page or display success message
+
+    }
+
 
 }
