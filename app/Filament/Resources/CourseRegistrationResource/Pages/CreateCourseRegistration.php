@@ -9,4 +9,5 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCourseRegistration extends CreateRecord
 {
     protected static string $resource = CourseRegistrationResource::class;
+
 }
