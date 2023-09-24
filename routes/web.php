@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
@@ -18,6 +19,11 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/invoice-mail', function () {
+    $invoice = Invoice::first();
+    return view('emails.invoice', compact('invoice'));
 });
 
 Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');

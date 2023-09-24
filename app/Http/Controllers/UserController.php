@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Invoice as AppInvoice;
+use App\Mail\Receipt;
 use App\Models\Course;
 use App\Models\CourseRegistration;
 use App\Models\Invoice;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -53,10 +56,26 @@ class UserController extends Controller
         if ($course_registration->save()) {
             $invoice = new Invoice();
             $invoice->course_registration_id = $course_registration->id;
-            $invoice->save();
-            return view('user.register.invoice', compact('invoice'));
-            // return $invoice;
-            # code...
+            if($invoice->save()) {
+
+                $invoice_data = [
+                    'id' => $invoice->id,
+                    'date' => $invoice->created_at->format('d-m-Y'),
+                    'user_name' => $invoice->courseRegistration->name,
+                    'user_address' => $invoice->courseRegistration->address,
+                    'course_name' => $invoice->courseRegistration->course->name,
+                    'fee' => $invoice->courseRegistration->course->fee,
+                    'user_id' => $invoice->user_id
+                ];
+
+                $invoice_mail = new AppInvoice($invoice_data);
+
+                // dd($invoice_mail);
+
+                Mail::to(auth()->user()->email)->send($invoice_mail);
+
+                return view('user.register.invoice', compact('invoice'));
+            }
         } else {
             dd('failed');
         }
@@ -108,17 +127,17 @@ class UserController extends Controller
 
         $invoice_data = [
             'id' => $invoice->id,
-            'date' => $invoice->created_at,
-            'user_name' => $invoice->courseRegistration->user->name,
+            'date' => $invoice->created_at->format('d-m-Y'),
+            'user_name' => $invoice->courseRegistration->name,
             'user_address' => $invoice->courseRegistration->address,
             'course_name' => $invoice->courseRegistration->course->name,
             'fee' => $invoice->courseRegistration->course->fee,
-            'payment_method' => $invoice->payment_method,
+            'user_id' => $invoice->user_id
         ];
 
-        // $receipt_mail = new Receipt(compact('invoice_data'));
+        $receipt_mail = new Receipt($invoice_data);
 
-        // Mail::to(auth()->user()->email)->send($receipt_mail);
+        Mail::to(auth()->user()->email)->send($receipt_mail);
 
         if ($invoice->save()) {
             return view('user.register.receipt', compact('session', 'invoice'));
