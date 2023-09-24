@@ -13,7 +13,7 @@
                     <dl>
                         <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Contents</dt>
                         <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                            {{!! $course->contents !!}}
+                            {!! $course->contents !!}
                         </dd>
                     </dl>
                     <dl class="flex items-center space-x-6">
@@ -81,32 +81,33 @@
                             </thead>
                             <tbody>
                                 @foreach ($courses as $course)
-                                    <a wire:click="setCourse({{$course->id}})">
-                                    <tr wire:click="setCourse({{$course->id}})"
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $course->name }}
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            {{ $course->fee }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {{ $course->date }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {{ $course->started_at }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {{ $course->ended_at }}
-                                        </td>
-                                        <td class="px-6 py-4 text-right flex flex-wrap justify-center space-x-2">
-                                            <a href="#{{$course->name}}" wire:click="setCourse({{ $course->id }})"
-                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
-                                            <a href="#"
-                                                class="font-medium text-green-600 dark:text-green-500 hover:underline">Register</a>
-                                        </td>
-                                        </a>
+                                    <a wire:click="setCourse({{ $course->id }})">
+                                        <tr wire:click="setCourse({{ $course->id }})"
+                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <th scope="row"
+                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $course->name }}
+                                            </th>
+                                            <td class="px-6 py-4">
+                                                {{ $course->fee }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ $course->date }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ $course->started_at }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ $course->ended_at }}
+                                            </td>
+                                            <td class="px-6 py-4 text-right flex flex-wrap justify-center space-x-2">
+                                                <a href="#{{ $course->name }}"
+                                                    wire:click="setCourse({{ $course->id }})"
+                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                                                <a href="#"
+                                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">Register</a>
+                                            </td>
+                                    </a>
                                     </tr>
                                 @endforeach
                             </tbody>

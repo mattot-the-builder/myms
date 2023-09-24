@@ -22,34 +22,24 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/" :active="request()->routeIs('welcome')">
-                        {{ __('Home') }}
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="#about" :active="request()->routeIs('user.index')">
-                        {{ __('About') }}
+                    <x-nav-link href="{{ route('course.register') }}" :active="request()->routeIs('course.register')">
+                        {{ __('Register') }}
                     </x-nav-link>
                 </div>
 
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="#services" :active="request()->routeIs('staff.index')">
-                        {{ __('Services') }}
+                    <x-nav-link href="{{ route('course.index') }}" :active="request()->routeIs('course.index')">
+                        {{ __('Course') }}
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="#experience" :active="request()->routeIs('expense-claim.index')">
-                        {{ __('Experience') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="#contacts" :active="request()->routeIs('mileage-claim.index')">
-                        {{ __('Contacts') }}
-                    </x-nav-link>
-                </div>
             </div>
 
             <div class="flex items-center ml-auto">
