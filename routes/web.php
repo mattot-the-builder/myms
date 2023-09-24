@@ -19,12 +19,10 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/invoice-mail', function () {
-    $invoice = Invoice::first();
-    return view('emails.invoice', compact('invoice'));
-});
+Route::view('/privacy-policy', 'policy')->name('policy');
+Route::view('/terms-of-service', 'terms')->name('terms');
 
 Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');
 
