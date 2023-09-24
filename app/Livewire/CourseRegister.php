@@ -17,6 +17,12 @@ class CourseRegister extends Component
     public function mount()
     {
         $this->courses = Course::all();
+
+        $course = Course::latest()->first();
+        $this->course_id = $course->id;
+        $this->course_date = $course->date;
+        $this->course_started_at = $course->started_at;
+        $this->course_ended_at = $course->ended_at;
     }
 
     public function render()

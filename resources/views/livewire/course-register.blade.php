@@ -5,9 +5,15 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
             <option selected="" value="null" disabled>Select Course</option>
             @foreach ($courses as $course)
-            <option wire:click="updateCourse({{ $course->id }})" value="{{ $course->id }}">
-                {{ $course->name }}
-            </option>
+                @if ($course->id == $course_id)
+                    <option selected wire:click="updateCourse({{ $course->id }})" value="{{ $course->id }}">
+                        {{ $course->name }}
+                    </option>
+                @else
+                    <option wire:click="updateCourse({{ $course->id }})" value="{{ $course->id }}">
+                        {{ $course->name }}
+                    </option>
+                @endif
             @endforeach
 
         </select>
