@@ -5,19 +5,26 @@ namespace App\Livewire;
 use App\Models\Course;
 use Livewire\Component;
 
-class CourseRegister extends Component
+class TrainingCourse extends Component
 {
     public $courses;
+    public $course_id;
+    public $course_name;
+    public $course_fee;
+    public $course_contents;
     public $course_date;
     public $course_started_at;
     public $course_ended_at;
-    public $course_id;
-
+    public $course_time;
 
     public function mount()
     {
         $this->courses = Course::all();
-        $course = Course::find($this->course_id);
+        $course = Course::latest()->first();
+        $this->course_id = $course->id;
+        $this->course_name = $course->name;
+        $this->course_fee = $course->fee;
+        $this->course_contents = $course->contents;
         $this->course_date = $course->date;
         $this->course_started_at = $course->started_at;
         $this->course_ended_at = $course->ended_at;
@@ -25,22 +32,18 @@ class CourseRegister extends Component
 
     public function render()
     {
-        return view('livewire.course-register');
+        return view('livewire.training-course');
     }
 
-    public function updateCourse($id)
+    public function setCourse($id)
     {
         $course = Course::find($id);
-
+        $this->course_id = $course->id;
+        $this->course_name = $course->name;
+        $this->course_fee = $course->fee;
+        $this->course_contents = $course->contents;
         $this->course_date = $course->date;
         $this->course_started_at = $course->started_at;
         $this->course_ended_at = $course->ended_at;
-        // dd($this->course->date);
     }
-
-    public function store()
-    {
-
-    }
-
 }

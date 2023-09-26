@@ -25,6 +25,8 @@ Route::view('/privacy-policy', 'policy')->name('policy');
 Route::view('/terms-of-service', 'terms')->name('terms');
 
 Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('/academy', 'academy')->name('academy');
+Route::view('/engineering', 'engineering')->name('engineering');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,6 +35,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/course', [UserController::class, 'index'])->name('course.index');
     Route::get('/register-course', [UserController::class, 'registerForm'])->name('course.register');
+    Route::get('/register-course/{id?}', [UserController::class, 'registerSelectedCourse'])->name('course.register-selected');
     Route::post('/register-course', [UserController::class, 'store'])->name('course.store');
 
     Route::get('/invoice', [UserController::class, 'invoice'])->name('course.invoice');

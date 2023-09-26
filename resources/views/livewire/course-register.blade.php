@@ -22,13 +22,10 @@
 
     <div class="flex-wrap">
         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Date : {{ $course_date }}
+            Start : {{ Carbon\Carbon::parse($course_started_at)->format('m/d/Y h:i A') }}
         </span>
         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Start : {{ $course_started_at }}
-        </span>
-        <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            End : {{ $course_ended_at }}
+            End : {{ Carbon\Carbon::parse($course_ended_at)->format('m/d/Y h:i A') }}
         </span>
     </div>
 </div>

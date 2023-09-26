@@ -24,7 +24,7 @@ class UserController extends Controller
     public function indexCourseRegistration()
     {
 
-        $course_registrations = auth()->user()->courseRegistrations()->simplePaginate(5);
+        $course_registrations = auth()->user()->courseRegistrations()->latest()->simplePaginate(5);
         return view('dashboard', compact('course_registrations'));
     }
 
@@ -38,7 +38,15 @@ class UserController extends Controller
     public function registerForm()
     {
         $courses = Course::all();
-        return view('user.register.create', compact('courses'));
+        $course_id = Course::latest()->first()->id;
+        return view('user.register.create', compact('courses', 'course_id'));
+    }
+
+    // register selected course
+    public function registerSelectedCourse($id)
+    {
+        $course_id = $id;
+        return view('user.register.create', compact('course_id'));
     }
 
     // store function

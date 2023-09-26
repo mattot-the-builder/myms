@@ -25,13 +25,13 @@
                                         Course
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Date
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
                                         Start
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         End
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Countdown
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         <span class="sr-only">View</span>
@@ -46,14 +46,16 @@
                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $course_registration->course->name }}
                                         </th>
-                                        <td class="px-6 py-4">
-                                            {{ $course_registration->course->date }}
+                                        <td class="px-6 py-4"
+                                            :class="$course_registration - > course - > started_at > Carbon\ Carbon::now() ?
+                                                'text-green-600' : 'text-yello-400'">
+                                            {{ Carbon\Carbon::parse($course_registration->course->started_at)->format('m/d/Y h:i A') }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $course_registration->course->started_at }}
+                                            {{ Carbon\Carbon::parse($course_registration->course->ended_at)->format('m/d/Y h:i A') }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $course_registration->course->ended_at }}
+                                            {{ Carbon\Carbon::parse($course_registration->course->started_at)->diffForHumans() }}
                                         </td>
                                         <td class="px-6 py-4 text-right flex flex-wrap justify-center space-x-2">
                                             <a href="{{ route('course-registration.view', $course_registration->id) }}"

@@ -21,7 +21,7 @@
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
+            '(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark')
@@ -37,11 +37,11 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
+            <header class="bg-white dark:bg-gray-800 shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
             @endif
 
             <section id="default-carousel" class="relative w-full mt-16" data-carousel="slide">
@@ -51,8 +51,7 @@
                     <!-- Item 1 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="{{ asset('assets/img/hero.jpg') }}"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="...">
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
                             <div class="flex h-full items-center justify-center">
@@ -64,9 +63,13 @@
                                     <p class="text-xl text-semibold" id="typing-text">
                                     </p>
                                     <div class="mt-12">
-                                        <a href="{{ route('register') }}"
-                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
-                                            Started</a>
+                                        <a href="{{ route('academy') }}"
+                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                            Engineering
+                                        </a>
+                                        <a href="{{ route('academy') }}"
+                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                            Academy</a>
                                     </div>
                                 </div>
 
@@ -76,8 +79,7 @@
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="assets/img/hero/hero2.jpg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="...">
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
                             <div class="flex h-full items-center justify-center">
@@ -101,8 +103,7 @@
                     <!-- Item 3 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="assets/img/hero/hero3.jpg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="...">
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
                             <div class="flex h-full items-center justify-center">
@@ -126,8 +127,7 @@
                     <!-- Item 4 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="assets/img/hero/hero4.jpg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="...">
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
                             <div class="flex h-full items-center justify-center">
@@ -151,8 +151,7 @@
                     <!-- Item 5 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="assets/img/hero/hero5.jpg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="...">
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
                             <div class="flex h-full items-center justify-center">
@@ -195,8 +194,8 @@
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                         <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 1 1 5l4 4" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 1 1 5l4 4" />
                         </svg>
                         <span class="sr-only">Previous</span>
                     </span>
@@ -208,8 +207,8 @@
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                         <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 9 4-4-4-4" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
                         </svg>
                         <span class="sr-only">Next</span>
                     </span>
@@ -218,6 +217,11 @@
 
             <!-- Page Content -->
             <main class="p-6 mx-auto md:px-6">
+
+                <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
+                    id="announcement">
+                    <h1 class="text-white"> news here</h1>
+                </section>
 
                 <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
                     id="about">
@@ -244,8 +248,8 @@
 
                         <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300">
                             <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2" stroke="currentColor" class="h-6 w-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="h-6 w-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3m5.457 5.457l7.086 7.086m0 0L21 21" />
 
@@ -264,8 +268,8 @@
 
                         <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300" data-aos-delay="300">
                             <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2" stroke="currentColor" class="h-6 w-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="h-6 w-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
 
@@ -285,8 +289,8 @@
 
                         <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300" data-aos-delay="600">
                             <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2" stroke="currentColor" class="h-6 w-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="h-6 w-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
 
@@ -303,8 +307,8 @@
 
                         <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300" data-aos-delay="900">
                             <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2" stroke="currentColor" class="h-6 w-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="h-6 w-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
 
@@ -529,8 +533,7 @@
                                 </div>
                             </div>
                             <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
-                                <h2
-                                    class="mt-12 lg:mb-20 text-center text-3xl font-bold text-gray-900 dark:text-white">
+                                <h2 class="mt-12 lg:mb-20 text-center text-3xl font-bold text-gray-900 dark:text-white">
                                     Contact <u class="text-red-600">Us</u>
                                 </h2>
                                 <div class="flex flex-wrap px-3 pt-12 pb-12 md:pb-0 lg:pt-0">
@@ -773,16 +776,12 @@
                                 <img src="{{ asset('assets/img/logo/cidb.svg') }}" alt="">
                             </a>
                             <a href="#" class="flex justify-center items-center">
-                                <img src="{{ asset('assets/img/logo/hrdf.svg') }}" alt=""
-                                    class="flex dark:hidden">
-                                <img src="{{ asset('assets/img/logo/hrdf-dark.svg') }}" alt=""
-                                    class="hidden dark:flex">
+                                <img src="{{ asset('assets/img/logo/hrdf.svg') }}" alt="" class="flex dark:hidden">
+                                <img src="{{ asset('assets/img/logo/hrdf-dark.svg') }}" alt="" class="hidden dark:flex">
                             </a>
                             <a href="#" class="flex justify-center items-center">
-                                <img src="{{ asset('assets/img/logo/mbot.svg') }}" alt=""
-                                    class="flex dark:hidden">
-                                <img src="{{ asset('assets/img/logo/mbot-dark.svg') }}" alt=""
-                                    class="hidden dark:flex">
+                                <img src="{{ asset('assets/img/logo/mbot.svg') }}" alt="" class="flex dark:hidden">
+                                <img src="{{ asset('assets/img/logo/mbot-dark.svg') }}" alt="" class="hidden dark:flex">
                             </a>
                             <a href="#" class="flex justify-center items-center">
                                 <img src="{{ asset('assets/img/logo/tnb.svg') }}" alt="">
@@ -803,112 +802,112 @@
         <script src="{{ asset('assets/js/script.js') }}"></script>
 
         @push('scripts')
-            <script>
-                const text =
-                    "Empowering Innovation Through Electrical Engineering Excellence. Elevate Your Career with Expert-Led Classes.";
-                const typingSpeed = 30; // Adjust this value to control typing speed in milliseconds
+        <script>
+            const text =
+                "Empowering Innovation Through Electrical Engineering Excellence. Elevate Your Career with Expert-Led Classes.";
+            const typingSpeed = 30; // Adjust this value to control typing speed in milliseconds
 
-                let index = 0;
+            let index = 0;
 
-                function typeText() {
-                    if (index < text.length) {
-                        document.getElementById("typing-text").innerHTML += text.charAt(index);
-                        index++;
-                        setTimeout(typeText, typingSpeed);
-                    }
+            function typeText() {
+                if (index < text.length) {
+                    document.getElementById("typing-text").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeText, typingSpeed);
                 }
+            }
 
-                document.addEventListener("DOMContentLoaded", function() {
-                    setTimeout(typeText, 1000);
-                });
-            </script>
+            document.addEventListener("DOMContentLoaded", function () {
+                setTimeout(typeText, 1000);
+            });
+        </script>
 
-        </div>
-    </body>
+    </div>
+</body>
 
-    <footer class="bg-white dark:bg-gray-900 p-3">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <div>
-                        <x-application-mark class="w-32" />
-                        <div class="mt-6">
-                            <p class="text-gray-500 dark:text-gray-400">For general Inquiries</p>
-                            <h2 class="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">admin@myms.co</h2>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="https://loremflickr.com/2500/1600/funny" class="hover:underline">Engineering</a>
-                            </li>
-                            <li>
-                                <a href="https://loremflickr.com/2500/1600/funny" class="hover:underline">Academy</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="https://www.facebook.com/zaidi.aziz.710/" class="hover:underline ">Facebook</a>
-                            </li>
-                            <li>
-                                <a href="https://www.tiktok.com/@mymsacademy" class="hover:underline">Tiktok</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                            <li class="mb-4">
-                                <a href="/privacy-policy" target="_blank" class="hover:underline">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a href="/terms-of-service" target="_blank" class="hover:underline">Terms &amp;
-                                    Conditions</a>
-                            </li>
-                        </ul>
+<footer class="bg-white dark:bg-gray-900 p-3">
+    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+                <div>
+                    <x-application-mark class="w-32" />
+                    <div class="mt-6">
+                        <p class="text-gray-500 dark:text-gray-400">For general Inquiries</p>
+                        <h2 class="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">admin@myms.co</h2>
                     </div>
                 </div>
+
             </div>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a
-                        href="{{ env('APP_URL') }}" class="hover:underline">myms.co™</a>. All Rights Reserved.
-                </span>
-                <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-                    <a href="https://www.facebook.com/zaidi.aziz.710/"
-                        class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 8 19">
-                            <path fill-rule="evenodd"
-                                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span class="sr-only">Facebook page</span>
-                    </a>
-                    <a href="https://www.tiktok.com/@mymsacademy"
-                        class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" <svg
-                            xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor"
-                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
-                        </svg>
-                        <span class="sr-only">Tiktok page</span>
-                    </a>
+
+
+
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        <li class="mb-4">
+                            <a href="https://loremflickr.com/2500/1600/funny" class="hover:underline">Engineering</a>
+                        </li>
+                        <li>
+                            <a href="https://loremflickr.com/2500/1600/funny" class="hover:underline">Academy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        <li class="mb-4">
+                            <a href="https://www.facebook.com/zaidi.aziz.710/" class="hover:underline ">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://www.tiktok.com/@mymsacademy" class="hover:underline">Tiktok</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                    <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        <li class="mb-4">
+                            <a href="/privacy-policy" target="_blank" class="hover:underline">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="/terms-of-service" target="_blank" class="hover:underline">Terms &amp;
+                                Conditions</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </footer>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="{{ env('APP_URL') }}"
+                    class="hover:underline">myms.co™</a>. All Rights Reserved.
+            </span>
+            <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
+                <a href="https://www.facebook.com/zaidi.aziz.710/"
+                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 8 19">
+                        <path fill-rule="evenodd"
+                            d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">Facebook page</span>
+                </a>
+                <a href="https://www.tiktok.com/@mymsacademy"
+                    class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" <svg
+                        xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
+                    </svg>
+                    <span class="sr-only">Tiktok page</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
-    </html>
+</html>
