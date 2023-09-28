@@ -168,15 +168,5 @@ class UserController extends Controller
 
     }
 
-    public function storeInquiry(Request $request)
-    {
-        $inquiry = new Inquiry();
-        $inquiry->fill($request->all());
-        if ($inquiry->save()) {
-            return redirect()->back();
-        } else {
-            dd('failed to save');
-        }
-    }
 
 }

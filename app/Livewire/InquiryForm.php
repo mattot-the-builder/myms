@@ -9,6 +9,7 @@ class InquiryForm extends Component
 {
     public $name;
     public $email;
+    public $contact;
     public $message;
     public $response = null;
 
@@ -22,12 +23,14 @@ class InquiryForm extends Component
         $this->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'contact' => 'required|numeric',
             'message' => 'required'
         ]);
 
         $inquiry = new Inquiry();
         $inquiry->name = $this->name;
         $inquiry->email = $this->email;
+        $inquiry->contact = $this->contact;
         $inquiry->message = $this->message;
 
         if ($inquiry->save()) {

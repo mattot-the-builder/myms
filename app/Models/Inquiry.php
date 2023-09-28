@@ -10,6 +10,6 @@ class Inquiry extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'message'
+        'name', 'email', 'contact', 'message'
     ];
 }
