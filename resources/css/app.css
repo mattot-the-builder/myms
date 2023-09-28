@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+    width: auto;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e53935;
+    border-radius: 10px;
+}
+
+.custom-scrollbar {
+    overflow-y: scroll;
+}

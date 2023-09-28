@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout/{id?}', [UserController::class, 'checkout'])->name('invoice.checkout');
     Route::get('/payment/success', [UserController::class, 'success'])->name('payment.success');
     Route::get('/course-registration/{id?}', [UserController::class, 'viewRegistration'])->name('course-registration.view');
+
+    Route::post('/inquiry', [UserController::class, 'storeInquiry'])->name('inquiry.store');
 });
 
 require __DIR__.'/auth.php';

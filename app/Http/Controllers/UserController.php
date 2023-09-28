@@ -6,6 +6,7 @@ use App\Mail\Invoice as AppInvoice;
 use App\Mail\Receipt;
 use App\Models\Course;
 use App\Models\CourseRegistration;
+use App\Models\Inquiry;
 use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,8 +25,12 @@ class UserController extends Controller
     public function indexCourseRegistration()
     {
 
-        $course_registrations = auth()->user()->courseRegistrations()->latest()->simplePaginate(5);
-        return view('dashboard', compact('course_registrations'));
+        if (auth()->user()->courseRegistrations()) {
+            $course_registrations = auth()->user()->courseRegistrations()->latest()->simplePaginate(5);
+            return view('dashboard', compact('course_registrations'));
+        } else {
+            return view('dashboard');
+        }
     }
 
     public function viewRegistration($id)
@@ -38,8 +43,13 @@ class UserController extends Controller
     public function registerForm()
     {
         $courses = Course::all();
-        $course_id = Course::latest()->first()->id;
-        return view('user.register.create', compact('courses', 'course_id'));
+        if (Course::latest()->first()) {
+            $course_id = Course::latest()->first()->id;
+            return view('user.register.create', compact('courses', 'course_id'));
+        } else {
+            $course_id = null;
+            return view('user.register.create', compact('courses', 'course_id'));
+        }
     }
 
     // register selected course
@@ -158,5 +168,15 @@ class UserController extends Controller
 
     }
 
+    public function storeInquiry(Request $request)
+    {
+        $inquiry = new Inquiry();
+        $inquiry->fill($request->all());
+        if ($inquiry->save()) {
+            return redirect()->back();
+        } else {
+            dd('failed to save');
+        }
+    }
 
 }

@@ -18,9 +18,11 @@ class CourseRegister extends Component
     {
         $this->courses = Course::all();
         $course = Course::find($this->course_id);
-        $this->course_date = $course->date;
-        $this->course_started_at = $course->started_at;
-        $this->course_ended_at = $course->ended_at;
+        if ($course) {
+            $this->course_date = $course->date;
+            $this->course_started_at = $course->started_at;
+            $this->course_ended_at = $course->ended_at;
+        }
     }
 
     public function render()

@@ -49,7 +49,7 @@
             <main class="pt-20 p-6 mx-auto md:px-6">
 
 
-                <x-myms-academy-logo class="w-56 mt-8 mb-12 mx-auto" />
+                <x-myms-academy-logo class="animate-pulse w-56 mt-8 mb-12 mx-auto" />
                 <section class="mb-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
                     id="about">
 

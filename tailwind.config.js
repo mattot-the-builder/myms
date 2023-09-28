@@ -21,5 +21,5 @@ export default {
         }
     },
 
-    plugins: [forms, 'flowbite/plugin']
+    plugins: [forms, 'prettier-plugin-tailwindcss', 'flowbite/plugin']
 }
