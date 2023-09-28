@@ -424,39 +424,39 @@
                         <!-- Scrollable container -->
                         <div class="flex p-4 space-x-4">
                             <!-- Each picture -->
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service1.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service2.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service3.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service4.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service5.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service6.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service7.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service8.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
-                            <div class="w-84 h-48 flex-shrink-0">
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
                                 <img src="assets/img/services/service9.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
