@@ -33,22 +33,27 @@
 <body class="font-sans antialiased">
     <div class="overflow-x-hidden w-full">
 
+        @php
+            $announcement = App\Models\Announcement::latest()->first();
+        @endphp
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <x-home-navigation />
-            <div id="banner" tabindex="-1"
-                class="flex fixed z-50 gap-8 justify-between items-start py-3 px-4 w-full border border-b border-gray-200 sm:items-center dark:border-gray-700 lg:py-4 bg-blue-800">
-                <p class="text-sm font-light text-white ">
-                    {{ App\Models\Announcement::latest()->first()->content }}
-                </p>
-                <button data-collapse-toggle="banner" type="button"
-                    class="flex items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-red-600 dark:hover:text-white">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </div>
+            @if ($announcement)
+                <div id="banner" tabindex="-1"
+                    class="flex fixed z-50 gap-8 justify-between items-start py-3 px-4 w-full border border-b border-gray-200 sm:items-center dark:border-gray-700 lg:py-4 bg-blue-800">
+                    <p class="text-sm font-light text-white ">
+                        {{ $announcement->content }}
+                    </p>
+                    <button data-collapse-toggle="banner" type="button"
+                        class="flex items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-red-600 dark:hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            @endif
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -238,11 +243,13 @@
             <!-- Page Content -->
             <main class="max-w-7xl p-6 mx-auto md:px-6">
 
-                <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
-                    id="announcement">
-                    <h1 class="text-gray-500 dark:text-white">
-                        {{ App\Models\Announcement::latest()->first()->content }} </h1>
-                </section>
+                @if ($announcement)
+                    <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
+                        id="announcement">
+                        <h1 class="text-gray-500 dark:text-white">
+                            {{ $announcement->content }}
+                    </section>
+                @endif
 
                 <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
                     id="about">
