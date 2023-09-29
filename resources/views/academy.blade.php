@@ -21,7 +21,7 @@
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
+            '(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark')
@@ -37,11 +37,11 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
+            <header class="bg-white dark:bg-gray-800 shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
             @endif
 
 
@@ -70,10 +70,22 @@
                     </div>
                 </section>
 
-                @livewire('training-course')
 
-                <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
-                    id="">
+                <div x-data="{show: false}" class="">
+                    <button x-show="!show" x-on:click="show = true" type="button"
+                        class="mx-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Show Courses
+                    </button>
+                    <button x-show="show" x-on:click="show = false" type="button"
+                        class="mx-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Hide Course
+                    </button>
+                    <div x-show="show">
+                        <livewire:training-course />
+                    </div>
+                </div>
+
+                <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center" id="">
 
                     <div class="flex justify-center">
                         <div class="max-w-7xl text-center">
@@ -225,8 +237,8 @@
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a
-                    href="{{ env('APP_URL') }}" class="hover:underline">myms.co™</a>. All Rights Reserved.
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="{{ env('APP_URL') }}"
+                    class="hover:underline">myms.co™</a>. All Rights Reserved.
             </span>
             <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
                 <a href="https://www.facebook.com/zaidi.aziz.710/"
