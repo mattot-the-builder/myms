@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\Invoice as AppInvoice;
 use App\Mail\Receipt;
+use App\Models\Career;
 use App\Models\Course;
 use App\Models\CourseRegistration;
 use App\Models\Inquiry;
@@ -178,6 +179,21 @@ class UserController extends Controller
         $career->position_to_apply = $request->position_to_apply;
         $career->resume = $request->resume;
         return view('/')->with('success', 'Application submitted successfully');
+    }
+
+    public function storeCareer(Request $request)
+    {
+        $career = new Career();
+        $career->name = $request->name;
+        $career->email = $request->email;
+        $career->contact = $request->contact;
+        $career->position_to_apply = $request->position_to_apply;
+        $career->resume = $request->resume;
+        if ($career->save()) {
+            return redirect()->route('welcome')->with('success', 'Application submitted successfully');
+        } else {
+            dd('fail');
+        }
     }
 
 }
