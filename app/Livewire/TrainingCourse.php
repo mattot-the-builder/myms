@@ -21,13 +21,15 @@ class TrainingCourse extends Component
     {
         $this->courses = Course::all();
         $course = Course::latest()->first();
-        $this->course_id = $course->id;
-        $this->course_name = $course->name;
-        $this->course_fee = $course->fee;
-        $this->course_contents = $course->contents;
-        $this->course_date = $course->date;
-        $this->course_started_at = $course->started_at;
-        $this->course_ended_at = $course->ended_at;
+        if ($course) {
+            $this->course_id = $course->id;
+            $this->course_name = $course->name;
+            $this->course_fee = $course->fee;
+            $this->course_contents = $course->contents;
+            $this->course_date = $course->date;
+            $this->course_started_at = $course->started_at;
+            $this->course_ended_at = $course->ended_at;
+        }
     }
 
     public function render()

@@ -168,5 +168,16 @@ class UserController extends Controller
 
     }
 
+    public function storeInquiry(Request $request)
+    {
+
+        $career = new Career();
+        $career->name = $request->name;
+        $career->email = $request->email;
+        $career->contact = $request->contact;
+        $career->position_to_apply = $request->position_to_apply;
+        $career->resume = $request->resume;
+        return view('/')->with('success', 'Application submitted successfully');
+    }
 
 }

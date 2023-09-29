@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Career;
 use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use http\Client\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,17 @@ Route::get('/', function () {
 Route::view('/privacy-policy', 'policy')->name('policy');
 Route::view('/terms-of-service', 'terms')->name('terms');
 
+Route::view('/career', 'career')->name('career');
+Route::post('/career', function (Request $request) {
+    $career = new Career();
+    $career->name = $request->name;
+    $career->email = $request->email;
+    $career->contact = $request->contact;
+    $career->position_to_apply = $request->position_to_apply;
+    $career->resume = $request->resume;
+    return view('/')->with('success', 'Application submitted successfully');
+})->name('career');
+
 Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::view('/academy', 'academy')->name('academy');
 Route::view('/engineering', 'engineering')->name('engineering');
@@ -42,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout/{id?}', [UserController::class, 'checkout'])->name('invoice.checkout');
     Route::get('/payment/success', [UserController::class, 'success'])->name('payment.success');
     Route::get('/course-registration/{id?}', [UserController::class, 'viewRegistration'])->name('course-registration.view');
+
 
 });
 

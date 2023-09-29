@@ -56,4 +56,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(CourseRegistration::class);
     }
+
+    public function hasDashboard($dashboard_name): bool
+    {
+        if ($this->role === 'admin' && $dashboard_name === 'admin_dashboard') {
+            return true;
+        } elseif ($this->role === 'staff' && $dashboard_name === 'staff_dashboard') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
