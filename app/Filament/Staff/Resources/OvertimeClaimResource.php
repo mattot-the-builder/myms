@@ -26,18 +26,12 @@ class OvertimeClaimResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('metadata')
+                Forms\Components\Section::make('Details')
                     ->schema([
-                        Forms\Components\Select::make('staff_id')
-                            ->relationship('staff', 'name')
-                            ->required(),
-                        Forms\Components\Select::make('status')
-                            ->options([
-                                'approved' => 'Approved',
-                                'pending' => 'Pending',
-                                'rejected' => 'Rejected',
-                                'claimed' => 'Claimed'
-                            ])
+                        Forms\Components\TextInput::make('staff_id')
+                            ->default(auth()->user()->staff->id)
+                            ->readOnly()
+                            // ->hidden()
                             ->required(),
                         Forms\Components\TextInput::make('ot_code')
                             ->required()

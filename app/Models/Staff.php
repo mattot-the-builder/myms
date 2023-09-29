@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -15,6 +16,7 @@ class Staff extends Model implements HasMedia
 
 
     protected $fillable = [
+        'user_id',
         'staff_status',
         'name',
         'front_ic',
@@ -41,6 +43,11 @@ class Staff extends Model implements HasMedia
         'vehicle_model',
         'is_approved'
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function mileageClaims(): HasMany
     {

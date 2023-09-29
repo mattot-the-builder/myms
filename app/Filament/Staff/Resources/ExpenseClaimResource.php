@@ -22,26 +22,22 @@ class ExpenseClaimResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('staff_id', auth()->user()->staff->id);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('metadata')
-                    ->schema([
-                        Forms\Components\Select::make('staff_id')
-                            ->relationship('staff', 'name')
-                            ->required(),
-                        Forms\Components\Select::make('status')
-                            ->options([
-                                'approved' => 'Approved',
-                                'pending' => 'Pending',
-                                'rejected' => 'Rejected',
-                                'claimed' => 'Claimed'
-                            ])
-                            ->required(),
-                    ])->columns(2),
                 Forms\Components\Section::make('Items')
                     ->schema([
+                        Forms\Components\TextInput::make('staff_id')
+                            ->default(auth()->user()->staff->id)
+                            ->readOnly()
+                            // ->hidden()
+                            ->required(),
                         Forms\Components\Repeater::make('items')
                             ->schema([
                                 Forms\Components\DatePicker::make('date')

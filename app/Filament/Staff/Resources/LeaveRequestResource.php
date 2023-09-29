@@ -13,6 +13,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
+use Carbon\Carbon;
 
 class LeaveRequestResource extends Resource
 {
@@ -24,23 +27,14 @@ class LeaveRequestResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('metadata')
-                    ->schema([
-                        Forms\Components\Select::make('staff_id')
-                            ->relationship('staff', 'name')
-                            ->required(),
-                        Forms\Components\Select::make('status')
-                            ->options([
-                                'approved' => 'Approved',
-                                'pending' => 'Pending',
-                                'rejected' => 'Rejected',
-                                'claimed' => 'Claimed'
-                            ])
-                            ->required(),
-                    ])->columns(2),
 
                 Forms\Components\Section::make('Details')
                     ->schema([
+                        Forms\Components\TextInput::make('staff_id')
+                            ->default(auth()->user()->staff->id)
+                            ->readOnly()
+                            // ->hidden()
+                            ->required(),
                         Forms\Components\DatePicker::make('start_date')
                             ->required(),
                         Forms\Components\DatePicker::make('end_date')

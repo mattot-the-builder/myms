@@ -24,23 +24,14 @@ class MileageClaimResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('metadata')
-                    ->schema([
-                        Forms\Components\Select::make('staff_id')
-                            ->relationship('staff', 'name')
-                            ->required(),
-                        Forms\Components\Select::make('status')
-                            ->options([
-                                'approved' => 'Approved',
-                                'pending' => 'Pending',
-                                'rejected' => 'Rejected',
-                                'claimed' => 'Claimed'
-                            ])
-                            ->required(),
-                    ])->columns(2),
 
                 Forms\Components\Section::make('Trip Details')
                     ->schema([
+                        Forms\Components\TextInput::make('staff_id')
+                            ->default(auth()->user()->staff->id)
+                            ->readOnly()
+                            // ->hidden()
+                            ->required(),
                         Forms\Components\DatePicker::make('trip_date')
                             ->required(),
                         Forms\Components\TextInput::make('trip_name')

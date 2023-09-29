@@ -12,7 +12,7 @@ return new class () extends Migration {
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
-            // foreign id user
+            $table->foreignId('user_id')->constrained();
             $table->string('name');
             $table->enum('staff_status', ['Permanent Staff', 'Contract Staff', 'Internship']);
             $table->string('ic_number');

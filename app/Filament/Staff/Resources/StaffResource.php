@@ -1,26 +1,31 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Staff\Resources;
 
-use App\Filament\Resources\StaffResource\Pages;
-use App\Filament\Resources\StaffResource\RelationManagers;
+use App\Filament\Staff\Resources\StaffResource\Pages;
+use App\Filament\Staff\Resources\StaffResource\RelationManagers;
 use App\Models\Staff;
 use Filament\Forms;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class StaffResource extends Resource
 {
     protected static ?string $model = Staff::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
-    protected static ?string $navigationGroup = 'System Management';
+    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+    protected static ?string $modelLabel = 'Staff Profile';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('user_id', auth()->user()->id);
+    }
 
     public static function form(Form $form): Form
     {
@@ -28,9 +33,10 @@ class StaffResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Personal Details')
                     ->schema([
-                        Forms\Components\Select::make('user_id')
-                            ->relationship('user', 'name')
-                            ->required(),
+                        Forms\Components\TextInput::make('user_id')
+                            ->default(auth()->user()->id)
+                            ->required()
+                            ->readOnly(),
                         Forms\Components\Radio::make('gender')
                             ->options([
                                 'Male' => 'Male',
