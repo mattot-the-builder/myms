@@ -774,25 +774,30 @@
                         </h2>
                         <div
                             class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-5 dark:text-gray-400">
-                            <a href="#" class="flex justify-center items-center">
+                            <a href="https://cims.cidb.gov.my" target="_blank"
+                                class="flex justify-center items-center">
                                 <img src="{{ asset('assets/img/logo/cidb.svg') }}" alt="">
                             </a>
-                            <a href="#" class="flex justify-center items-center">
+                            <a href="https://hrdcorp.gov.my" target="_blank"
+                                class="flex justify-center items-center">
                                 <img src="{{ asset('assets/img/logo/hrdf.svg') }}" alt=""
                                     class="flex dark:hidden">
                                 <img src="{{ asset('assets/img/logo/hrdf-dark.svg') }}" alt=""
                                     class="hidden dark:flex">
                             </a>
-                            <a href="#" class="flex justify-center items-center">
+                            <a href="https://www.mbot.org.my" target="_blank"
+                                class="flex justify-center items-center">
                                 <img src="{{ asset('assets/img/logo/mbot.svg') }}" alt=""
                                     class="flex dark:hidden">
                                 <img src="{{ asset('assets/img/logo/mbot-dark.svg') }}" alt=""
                                     class="hidden dark:flex">
                             </a>
-                            <a href="#" class="flex justify-center items-center">
+                            <a href="https://www.tnb.com.my" target="_blank"
+                                class="flex justify-center items-center">
                                 <img src="{{ asset('assets/img/logo/tnb.svg') }}" alt="">
                             </a>
-                            <a href="#" class="flex justify-center items-center">
+                            <a href="https://www.st.gov.my/" target="_blank"
+                                class="flex justify-center items-center">
                                 <img src="{{ asset('assets/img/logo/st.svg') }}" alt="">
                             </a>
                         </div>
