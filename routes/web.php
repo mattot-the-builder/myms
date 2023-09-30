@@ -6,6 +6,7 @@ use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/sitemap', function () {
+    SitemapGenerator::create('https://myms.co')->writeToFile('public');
+});
 
 Route::get('/', function () {
     return view('welcome');
