@@ -56,7 +56,7 @@
                 </div>
             @endif
 
-            <div class="mt-16 md:mt-0 md:top-40 md:z-40 md:absolute flex w-full items-center justify-center">
+            <div class="mt-16 md:mt-0 md:top-36 md:z-40 md:absolute flex w-full items-center justify-center">
                 <div
                     class="max-w-[800px] px-6 py-6 text-center text-gray-900 md:text-white dark:text-white md:py-0 md:px-12">
                     <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
@@ -180,13 +180,6 @@
             <main class="max-w-7xl p-6 mx-auto md:px-6">
                 <x-alert />
 
-                @if ($announcement)
-                    <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
-                        id="announcement">
-                        <h1 class="text-gray-500 dark:text-white">
-                            {{ $announcement->content }}
-                    </section>
-                @endif
 
                 <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
                     id="about">
