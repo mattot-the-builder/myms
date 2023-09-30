@@ -194,7 +194,7 @@ class UserController extends Controller
         if ($career->save()) {
             return redirect()->route('welcome')->with('success', 'Application submitted successfully');
         } else {
-            dd('fail');
+            return redirect()->route('welcome')->with('error', 'Application failed to submit');
         }
     }
 

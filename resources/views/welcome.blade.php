@@ -55,6 +55,7 @@
                 </div>
             @endif
 
+
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
@@ -240,6 +241,7 @@
 
             <!-- Page Content -->
             <main class="max-w-7xl p-6 mx-auto md:px-6">
+                <x-alert />
 
                 @if ($announcement)
                     <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
