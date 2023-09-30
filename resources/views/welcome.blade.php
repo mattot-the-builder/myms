@@ -666,7 +666,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div data-aos="zoom-in" data-aos-duration="500" data-aos-delay="1000" class="mb-6 lg:mb-0">
+                        <div data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500" class="mb-6 lg:mb-0">
                             <div
                                 class="relative block rounded-lg p-6 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-800">
                                 <div class="flex-row items-center lg:flex">
@@ -789,7 +789,7 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                         <ul class="text-gray-500 dark:text-gray-400 font-medium">
                             <li class="mb-4">
-                                <a href="https://loremflickr.com/2500/1600/funny" class="hover:underline">Engineering</a>
+                                <a href="/" class="hover:underline">Engineering</a>
                             </li>
                             <li>
                                 <a href="https://loremflickr.com/2500/1600/funny" class="hover:underline">Academy</a>

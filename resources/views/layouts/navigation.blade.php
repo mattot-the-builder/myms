@@ -133,31 +133,22 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
 
+        {{-- <div class="py-1 space-y-1"> --}}
+        {{--     <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')"> --}}
+        {{--         {{ __('Dashboard') }} --}}
+        {{--     </x-responsive-nav-link> --}}
+        {{-- </div> --}}
         <div class="py-1 space-y-1">
-            <x-responsive-nav-link href="/" :active="request()->routeIs('welcome')">
-                {{ __('Home') }}
+            <x-responsive-nav-link href="{{ route('course.register') }}" :active="request()->routeIs('course.register')">
+                {{ __('Register') }}
             </x-responsive-nav-link>
         </div>
         <div class="py-1 space-y-1">
-            <x-responsive-nav-link href="#about" :active="request()->routeIs('user.index')">
-                {{ __('About') }}
+            <x-responsive-nav-link href="{{ route('course.index') }}" :active="request()->routeIs('course.index')">
+                {{ __('Course') }}
             </x-responsive-nav-link>
         </div>
-        <div class="py-1 space-y-1">
-            <x-responsive-nav-link href="#services" :active="request()->routeIs('staff.index')">
-                {{ __('Services') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class="py-1 space-y-1">
-            <x-responsive-nav-link href="#experience" :active="request()->routeIs('expense-claim.index')">
-                {{ __('Experience') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class="py-1 space-y-1">
-            <x-responsive-nav-link href="#contacts" :active="request()->routeIs('mileage-claim.index')">
-                {{ __('Contacts') }}
-            </x-responsive-nav-link>
-        </div>
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
