@@ -11,7 +11,7 @@ class OvertimeClaim extends Model
     use HasFactory;
 
     protected $fillable = [
-        'staff_id', 'total_hours', 'ot_code', 'items', 'total_claim', 'status'
+        'staff_id', 'total_hours',  'items', 'total_claim', 'status'
     ];
 
     protected $casts = [

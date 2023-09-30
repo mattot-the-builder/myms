@@ -36,6 +36,7 @@
         @php
             $announcement = App\Models\Announcement::latest()->first();
         @endphp
+
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <x-home-navigation />
             @if ($announcement)
@@ -55,17 +56,25 @@
                 </div>
             @endif
 
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+            <div class="mt-16 md:mt-0 md:top-40 md:z-40 md:absolute flex w-full items-center justify-center">
+                <div
+                    class="max-w-[800px] px-6 py-6 text-center text-gray-900 md:text-white dark:text-white md:py-0 md:px-12">
+                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
+                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
+                        Unlocking Possibilities
+                    </h2>
+                    <p class="text-xl text-semibold" id="typing-text">
+                    </p>
+                    <div class="mt-12">
+                        <a href="{{ route('academy') }}"
+                            class="text-white bg-red-900 border border-red-300 focus:outline-none  hover:bg-red-600 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-lg px-10 py-3 mr-2 mb-2 dark:bg-red-900 dark:text-white dark:border-gray-600 dark:hover:bg-red-600 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                            Academy
+                        </a>
                     </div>
-                </header>
-            @endif
+                </div>
+            </div>
 
-            <section id="default-carousel" class="relative w-full mt-16" data-carousel="slide">
+            <section id="default-carousel" class="hidden md:block relative w-full mt-16" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="h-96 relative h-56 overflow-hidden md:h-96 z-0">
 
@@ -76,24 +85,6 @@
                             alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
-                            <div class="flex h-full items-center justify-center">
-                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
-                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
-                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
-                                        Unlocking Possibilities
-                                    </h2>
-                                    <p class="text-xl text-semibold" id="typing-text">
-                                    </p>
-                                    <div class="mt-12">
-                                        <a href="{{ route('academy') }}"
-                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-red-100 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-lg px-10 py-3 mr-2 mb-2 dark:bg-red-900 dark:text-white dark:border-gray-600 dark:hover:bg-red-600 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                                            Academy
-                                        </a>
-
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                     <!-- Item 2 -->
@@ -103,22 +94,6 @@
                             alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
-                            <div class="flex h-full items-center justify-center">
-                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
-                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
-                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
-                                        Third slide
-                                    </h2>
-                                    <p class="text-xl text-semibold" id="typing-text">
-                                    </p>
-                                    <div class="mt-12">
-                                        <a href="{{ route('register') }}"
-                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
-                                            Started</a>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                     <!-- Item 3 -->
@@ -128,22 +103,6 @@
                             alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
-                            <div class="flex h-full items-center justify-center">
-                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
-                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
-                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
-                                        Third slide
-                                    </h2>
-                                    <p class="text-xl text-semibold" id="typing-text">
-                                    </p>
-                                    <div class="mt-12">
-                                        <a href="{{ route('register') }}"
-                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
-                                            Started</a>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                     <!-- Item 4 -->
@@ -153,22 +112,6 @@
                             alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
-                            <div class="flex h-full items-center justify-center">
-                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
-                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
-                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
-                                        Fourth slide
-                                    </h2>
-                                    <p class="text-xl text-semibold" id="typing-text">
-                                    </p>
-                                    <div class="mt-12">
-                                        <a href="{{ route('register') }}"
-                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
-                                            Started</a>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                     <!-- Item 5 -->
@@ -178,22 +121,6 @@
                             alt="...">
                         <div
                             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
-                            <div class="flex h-full items-center justify-center">
-                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
-                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
-                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
-                                        Fifth slide
-                                    </h2>
-                                    <p class="text-xl text-semibold" id="typing-text">
-                                    </p>
-                                    <div class="mt-12">
-                                        <a href="{{ route('register') }}"
-                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
-                                            Started</a>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -212,7 +139,7 @@
                 </div>
                 <!-- Slider controls -->
                 <button type="button"
-                    class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hidden"
                     data-carousel-prev>
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -225,7 +152,7 @@
                     </span>
                 </button>
                 <button type="button"
-                    class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hidden"
                     data-carousel-next>
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -238,6 +165,16 @@
                     </span>
                 </button>
             </section>
+
+            <!-- Page Heading -->
+            @if (isset($header))
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endif
+
 
             <!-- Page Content -->
             <main class="max-w-7xl p-6 mx-auto md:px-6">

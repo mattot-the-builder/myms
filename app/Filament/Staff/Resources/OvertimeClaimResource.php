@@ -33,9 +33,6 @@ class OvertimeClaimResource extends Resource
                             ->readOnly()
                             // ->hidden()
                             ->required(),
-                        Forms\Components\TextInput::make('ot_code')
-                            ->required()
-                            ->numeric(),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Items')
@@ -60,9 +57,14 @@ class OvertimeClaimResource extends Resource
                                 Forms\Components\TextInput::make('details')
                                     ->required()
                                     ->columnSpanFull(),
+                                Forms\Components\TextInput::make('ot_code')
+                                    ->numeric()
+                                    ->inputMode('decimal')
+                                    ->required(),
                                 Forms\Components\TextInput::make('total_hours')
                                     ->numeric()
-                                    ->readOnly(),
+                                    ->readOnly()
+                                    ->required(),
                             ])
                             ->columns(3)
                             ->itemLabel(fn (array $state): ?string => $state['details'] ?? null)
@@ -99,9 +101,6 @@ class OvertimeClaimResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('total_hours')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('ot_code')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('total_claim')

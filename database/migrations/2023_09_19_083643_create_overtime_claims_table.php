@@ -14,7 +14,6 @@ return new class () extends Migration {
             $table->id();
             $table->foreignId('staff_id')->constrained()->cascadeOnDelete();
             $table->decimal('total_hours', 8, 2);
-            $table->decimal('ot_code');
             $table->json('items');
             $table->decimal('total_claim', 8, 2);
             $table->enum('status', ['pending', 'approved', 'rejected', 'claimed'])->default('pending');
