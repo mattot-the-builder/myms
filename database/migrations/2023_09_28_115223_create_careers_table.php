@@ -16,7 +16,6 @@ return new class () extends Migration {
             $table->string('email');
             $table->string('contact');
             $table->string('position_to_apply');
-            $table->string('resume');
             $table->timestamps();
         });
     }

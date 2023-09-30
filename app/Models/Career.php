@@ -13,6 +13,6 @@ class Career extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $fillable = [
-        'name', 'email', 'contact', 'position_to_apply', 'resume'
+        'name', 'email', 'contact', 'position_to_apply'
     ];
 }
