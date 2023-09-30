@@ -41,7 +41,7 @@
             <x-home-navigation />
             @if ($announcement)
                 <div id="banner" tabindex="-1"
-                    class="flex fixed z-50 gap-8 justify-between items-start py-3 px-4 w-full border border-b border-gray-200 sm:items-center dark:border-gray-700 lg:py-4 bg-blue-800">
+                    class="flex fixed z-40 gap-8 justify-between items-start py-3 px-4 w-full border border-b border-gray-200 sm:items-center dark:border-gray-700 lg:py-4 bg-blue-800">
                     <p class="text-sm font-light text-white ">
                         {{ $announcement->content }}
                     </p>
@@ -56,7 +56,7 @@
                 </div>
             @endif
 
-            <div class="mt-16 md:mt-0 md:top-36 md:z-40 md:absolute flex w-full items-center justify-center">
+            <div class="mt-16 md:mt-0 md:top-36 z-30 md:absolute flex w-full items-center justify-center">
                 <div
                     class="max-w-[800px] px-6 py-6 text-center text-gray-900 md:text-white dark:text-white md:py-0 md:px-12">
                     <h2 data-aos="zoom-fade-in" data-aos-duration="3000"

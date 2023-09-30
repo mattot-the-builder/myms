@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }"
-    class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 fixed w-full z-40 top-0 left-0">
+    class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 fixed w-full z-50 top-0 left-0">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -175,7 +175,11 @@
                 {{ __('Contacts') }}
             </x-responsive-nav-link>
         </div>
-
+        <div class="py-1 space-y-1">
+            <x-nav-link href="{{ route('career') }}" :active="request()->routeIs('career')">
+                {{ __('Career') }}
+            </x-nav-link>
+        </div>
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
 
