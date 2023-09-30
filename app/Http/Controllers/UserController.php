@@ -12,6 +12,7 @@ use App\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class UserController extends Controller
 {
@@ -188,12 +189,18 @@ class UserController extends Controller
         $career->email = $request->email;
         $career->contact = $request->contact;
         $career->position_to_apply = $request->position_to_apply;
-        $career->resume = $request->resume;
+        $career->addMedia($request->resume)->toMediaCollection('resume');
+
         if ($career->save()) {
             return redirect()->route('welcome')->with('success', 'Application submitted successfully');
         } else {
             dd('fail');
         }
+    }
+
+    public function viewResume($id)
+    {
+        return Media::find($id);
     }
 
 }

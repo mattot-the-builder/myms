@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Actions\Action;
 
 class CareerResource extends Resource
 {
@@ -33,9 +34,9 @@ class CareerResource extends Resource
                 Forms\Components\TextInput::make('position_to_apply')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('resume')
-                    ->required()
-                    ->maxLength(255),
+                // Forms\Components\TextInput::make('resume')
+                //     ->required()
+                //     ->maxLength(255),
             ]);
     }
 
@@ -49,6 +50,7 @@ class CareerResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('position_to_apply')
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('resume')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -65,6 +67,8 @@ class CareerResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('resume')
+                    ->url(fn (Career $career): string => route('resume.view', $career->getMedia('resume')->first()->id)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

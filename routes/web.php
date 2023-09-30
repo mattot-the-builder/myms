@@ -27,6 +27,7 @@ Route::view('/terms-of-service', 'terms')->name('terms');
 
 Route::view('/career', 'career')->name('career');
 Route::post('/career', [UserController::class, 'storeCareer'])->name('career.store');
+Route::get('/resume/{id?}', [UserController::class, 'viewResume'])->name('resume.view');
 
 Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::view('/academy', 'academy')->name('academy');
