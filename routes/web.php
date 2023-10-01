@@ -20,7 +20,11 @@ use Spatie\Sitemap\SitemapGenerator;
 */
 
 Route::get('/sitemap', function () {
-    SitemapGenerator::create('https://myms.co')->writeToFile('public');
+    SitemapGenerator::create('https://myms.co')->writeToFile('sitemap.xml');
+});
+
+Route::get('/download-list-courses', function () {
+    return response()->download(public_path('List Course and Fee.pdf'));
 });
 
 Route::get('/', function () {

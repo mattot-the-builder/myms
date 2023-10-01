@@ -390,6 +390,38 @@
                                 <img src="assets/img/services/service9.jpg" alt="Image 1"
                                     class="w-full h-full object-cover rounded-lg">
                             </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service10.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service11.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service12.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service13.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service14.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service15.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service16.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="w-72 md:w-96 h-48 flex-shrink-0">
+                                <img src="assets/img/services/service17.jpg" alt="Image 1"
+                                    class="w-full h-full object-cover rounded-lg">
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -792,7 +824,7 @@
                                 <a href="/" class="hover:underline">Engineering</a>
                             </li>
                             <li>
-                                <a href="https://loremflickr.com/2500/1600/funny" class="hover:underline">Academy</a>
+                                <a href="{{ route('academy') }}" class="hover:underline">Academy</a>
                             </li>
                         </ul>
                     </div>

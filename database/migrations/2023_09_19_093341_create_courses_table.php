@@ -14,7 +14,8 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->text('contents');
-            $table->date('date');
+            $table->date('date_start');
+            $table->date('date_end');
             $table->time('started_at');
             $table->time('ended_at');
             $table->decimal('fee', 8, 2);

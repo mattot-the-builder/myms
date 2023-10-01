@@ -35,13 +35,15 @@ class CourseResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\Section::make('Date and Time')
                     ->schema([
-                        Forms\Components\DatePicker::make('date')
+                        Forms\Components\DatePicker::make('date_start')
+                            ->required(),
+                        Forms\Components\DatePicker::make('date_end')
                             ->required(),
                         Forms\Components\TimePicker::make('started_at')
                             ->required(),
                         Forms\Components\TimePicker::make('ended_at')
                             ->required(),
-                    ])->columns(3),
+                    ])->columns(2),
             ]);
     }
 
@@ -51,7 +53,10 @@ class CourseResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('date')
+                Tables\Columns\TextColumn::make('date_start')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('date_end')
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('started_at'),

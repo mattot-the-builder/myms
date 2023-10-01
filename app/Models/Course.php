@@ -10,7 +10,7 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'date','contents', 'started_at', 'ended_at', 'fee'];
+    protected $fillable = ['name', 'date_start', 'date_end','contents', 'started_at', 'ended_at', 'fee'];
 
     public function registrations(): HasMany
     {

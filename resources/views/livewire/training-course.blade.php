@@ -24,7 +24,6 @@
                     @endforeach
 
                 </select>
-
             </div>
 
             <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
@@ -33,7 +32,7 @@
                 <p class="mb-4 text-xl font-extrabold leading-none text-gray-900 md:text-2xl dark:text-white">
                     RM {{ $course_fee }}</p>
                 <dl>
-                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt>
+                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Course Content</dt>
                     <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
                         {!! $course_contents !!}
                     </dd>
@@ -42,17 +41,19 @@
                     <div>
                         <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Date</dt>
                         <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{ $course_date }}
+                            {{ Carbon\Carbon::parse($course->date_start)->format('d F Y') . ' - ' . Carbon\Carbon::parse($course->date_end)->format('d F Y') }}
+                        </dd>
                         </dd>
                     </div>
-                    <div>
-                        <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Time</dt>
-                        <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                            {{ $course_started_at }} to {{ $course_ended_at }}</dd>
-                    </div>
                 </dl>
+                <div>
+                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Time</dt>
+                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
+                        {{ Carbon\Carbon::parse($course->started_at)->format('H:i A') . ' - ' . Carbon\Carbon::parse($course->ended_at)->format('H:i A') }}
+                </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('course.register-selected', $course_id) }}" type="button"
-                        class="text-white inline-flex items-center bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        class="mx-auto text-white inline-flex items-center bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                         <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">

@@ -17,15 +17,15 @@
                             </dd>
                         </dl>
                         <div>
-                            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Start</dt>
+                            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Date</dt>
                             <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                                {{ Carbon\Carbon::parse($course->started_at)->format('l, F j, Y h:i A') }}
+                                {{ Carbon\Carbon::parse($course->date_start)->format('d F Y') . ' - ' . Carbon\Carbon::parse($course->date_end)->format('d F Y') }}
                             </dd>
                         </div>
                         <div>
-                            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">End</dt>
+                            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Time</dt>
                             <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                                {{ Carbon\Carbon::parse($course->ended_at)->format('l, F j, Y h:i A') }}
+                                {{ Carbon\Carbon::parse($course->started_at)->format('H:i A') . ' - ' . Carbon\Carbon::parse($course->ended_at)->format('H:i A') }}
                             </dd>
                         </div>
                         <div class="flex items-center space-x-4">
@@ -83,10 +83,10 @@
                                                 RM {{ $course->fee }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ Carbon\Carbon::parse($course->started_at)->format('m/d/Y h:i A') }}
+                                                {{ Carbon\Carbon::parse($course->date_start)->format('d F Y') }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ Carbon\Carbon::parse($course->ended_at)->format('m/d/Y h:i A') }}
+                                                {{ Carbon\Carbon::parse($course->date_end)->format('d F Y') }}
                                             </td>
                                             <td class="px-6 py-4 text-right flex flex-wrap justify-center space-x-2">
                                                 <a href="#{{ $course->name }}"

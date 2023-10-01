@@ -176,9 +176,9 @@
             </x-responsive-nav-link>
         </div>
         <div class="py-1 space-y-1">
-            <x-nav-link href="{{ route('career') }}" :active="request()->routeIs('career')">
+            <x-responsive-nav-link href="{{ route('career') }}" :active="request()->routeIs('career')">
                 {{ __('Career') }}
-            </x-nav-link>
+            </x-responsive-nav-link>
         </div>
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
