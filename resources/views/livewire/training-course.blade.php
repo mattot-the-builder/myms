@@ -40,8 +40,9 @@
                 <dl class="flex items-center space-x-6">
                     <div>
                         <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Date</dt>
-                        {{ Carbon\Carbon::parse($course_date_start)->format('d F Y') . ' - ' . Carbon\Carbon::parse($course_date_end)->format('d F Y') }}
-                        </dd>
+
+                        <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
+                            {{ Carbon\Carbon::parse($course_date_start)->format('d F Y') . ' - ' . Carbon\Carbon::parse($course_date_end)->format('d F Y') }}
                         </dd>
                     </div>
                 </dl>
@@ -49,6 +50,7 @@
                     <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Time</dt>
                     <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
                         {{ Carbon\Carbon::parse($course_started_at)->format('H:i A') . ' - ' . Carbon\Carbon::parse($course_ended_at)->format('H:i A') }}
+                    </dd>
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('course.register-selected', $course_id) }}" type="button"
