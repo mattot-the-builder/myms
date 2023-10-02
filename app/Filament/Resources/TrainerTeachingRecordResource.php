@@ -28,7 +28,8 @@ class TrainerTeachingRecordResource extends Resource
                     ->relationship('course', 'name')
                     ->required(),
                 Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'id')
+                    ->label('Trainer Name')
+                    ->relationship('user', 'name')
                     ->required(),
                 Forms\Components\DateTimePicker::make('clock_in')
                     ->required(),
