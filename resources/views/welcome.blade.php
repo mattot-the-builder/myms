@@ -495,7 +495,7 @@
                                     Contact <u class="text-red-600">Us</u>
                                 </h2>
                                 <div class="flex flex-wrap px-3 pt-12 pb-12 md:pb-0 lg:pt-0">
-                                    <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="300"
+                                    <div data-aos="fade-left" data-aos-duration="500"
                                         class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                         <div class="flex items-start">
                                             <div class="shrink-0">
@@ -572,7 +572,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div
+                                    <div data-aos="fade-left"
                                         class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                         <div class="flex items-start">
                                             <div class="shrink-0">

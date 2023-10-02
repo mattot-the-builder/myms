@@ -74,10 +74,21 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Competency</label>
                                 <select id="competency" name="competency"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option selected="">Select competency</option>
-                                    <option value="1">Level 1</option>
-                                    <option value="2">Level 2</option>
-                                    <option value="3">Level 3</option>
+                                    <option selected="" disabled>Select competency</option>
+                                    <option value="Electrical Service Engineer">Electrical Service Engineer</option>
+                                    <option value="Electrical Competent Engineer">Electrical Competent Engineer</option>
+                                    <option value="Electrical Supervisor">Electrical Supervisor</option>
+                                    <option value="Chargemen BO 33kV">Chargemen BO 33kV</option>
+                                    <option value="Chargemen BO 11kV">Chargemen BO 11kV</option>
+                                    <option value="Chargemen B1 33kV">Chargemen B1 33kV</option>
+                                    <option value="Chargemen B1 11kV">Chargemen B1 11kV</option>
+                                    <option value="Chargemen B4 33kV">Chargemen B4 33kV</option>
+                                    <option value="Chargemen B4 11kV">Chargemen B4 11kV</option>
+                                    <option value="Chargemen A4">Chargemen A4</option>
+                                    <option value="Chargemen A1">Chargemen A1</option>
+                                    <option value="Chargemen A0">Chargemen A0</option>
+                                    <option value="Cable Jointer">Cable Jointer</option>
+                                    <option value="Wireman">Wireman</option>
                                 </select>
                             </div>
                             <div>
