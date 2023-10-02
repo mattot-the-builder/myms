@@ -143,15 +143,15 @@
 
                                     <div class="block">
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/adtec1.png" alt="image description">
+                                            src="assets/img/completed-course/adtec1.PNG" alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/adtec2.png" alt="image description">
+                                            src="assets/img/completed-course/adtec2.PNG" alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/adtec3.jpg" alt="image description">
+                                            src="assets/img/completed-course/adtec3.JPG" alt="image description">
                                     </div>
                                 </div>
 
@@ -167,7 +167,7 @@
 
                                     <div class="block">
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/ilp1.jpg" alt="image description">
+                                            src="assets/img/completed-course/ilp1.JPG" alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
