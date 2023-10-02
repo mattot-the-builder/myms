@@ -277,7 +277,7 @@
 
                                     <div class="block">
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="{{ asset('assets/img/completed-course/ilp1.jpg') }}"
+                                            src="{{ asset('assets/img/completed-course/ilp1.JPG') }}"
                                             alt="image description">
                                     </div>
                                     <div>
