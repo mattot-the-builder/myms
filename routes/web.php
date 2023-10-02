@@ -39,11 +39,22 @@ Route::post('/career', [UserController::class, 'storeCareer'])->name('career.sto
 Route::get('/resume/{id?}', [UserController::class, 'viewResume'])->name('resume.view');
 
 Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
 Route::get('/academy', function () {
     $courses = App\Models\Course::all();
-    return view('academy', compact('courses'));
+    $course = App\Models\Course::latest()->first();
+    return view('academy', compact('courses', 'course'));
 })->name('academy');
-Route::view('/engineering', 'engineering')->name('engineering');
+
+Route::get('/academy/{id?}', function ($id) {
+    $courses = App\Models\Course::all();
+    $course = App\Models\Course::find($id);
+    // dd($course);
+    return view('academy', compact('courses', 'course'));
+})->name('academy.view');
+
+// Route::view('/engineering', 'engineering')->name('engineering');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

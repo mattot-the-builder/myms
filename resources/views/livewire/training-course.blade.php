@@ -6,22 +6,21 @@
                 <u class="text-red-600">Courses</u>
             </h2>
             <div>
-                <label for="course_id"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
+                <label for="course_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
 
-                <select id="course_id" name="course_id"
+                <select id="course_id" name="course_id" wire:model="course_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     <option selected="" value="null" disabled>Select Course</option>
                     @foreach ($courses as $course)
-                    @if ($course->id === $course_id)
-                    <option selected wire:click="setCourse({{ $course->id }})" value="{{ $course->id }}">
-                        {{ $course->name }}
-                    </option>
-                    @else
-                    <option wire:click="setCourse({{ $course->id }})" value="{{ $course->id }}">
-                        {{ $course->name }}
-                    </option>
-                    @endif
+                        @if ($course->id === $course_id)
+                            <option wire:click="test" value="{{ $course->id }}">
+                                {{ $course->name }}
+                            </option>
+                        @else
+                            <option wire:click="test" value="{{ $course->id }}">
+                                {{ $course->name }}
+                            </option>
+                        @endif
                     @endforeach
 
                 </select>
@@ -44,8 +43,8 @@
 
                         <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
                             {{ Carbon\Carbon::parse($course_date_start)->format('d F Y') .
-                            ' - ' .
-                            Carbon\Carbon::parse($course_date_end)->format('d F Y') }}
+                                ' - ' .
+                                Carbon\Carbon::parse($course_date_end)->format('d F Y') }}
                         </dd>
                     </div>
                 </dl>
@@ -53,8 +52,8 @@
                     <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Time</dt>
                     <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
                         {{ Carbon\Carbon::parse($course_started_at)->format('H:i A') .
-                        ' - ' .
-                        Carbon\Carbon::parse($course_ended_at)->format('H:i A') }}
+                            ' - ' .
+                            Carbon\Carbon::parse($course_ended_at)->format('H:i A') }}
                     </dd>
                 </dl>
                 <div class="flex items-center space-x-4">

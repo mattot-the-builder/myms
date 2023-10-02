@@ -31,6 +31,8 @@
     </script>
 </head>
 
+
+
 <body class="font-sans antialiased">
     <div class="overflow-x-hidden w-full">
 
@@ -81,7 +83,8 @@
                 </section>
 
 
-                <div x-data="{ show: false }" class="">
+
+                <div x-data="{ show: true }" class="">
                     <button x-show="!show" x-on:click="show = true" type="button"
                         class="mx-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                         Show Courses
@@ -95,7 +98,107 @@
                         Download List of Courses
                     </a>
                     <div x-show="show">
-                        <livewire:training-course :courses="$courses" />
+                        <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center"
+                            id="courses">
+                            <div class="flex justify-center">
+                                <div class="max-w-[700px] text-center">
+                                    <h2 class="mb-6 text-center text-3xl font-bold text-grey-800 dark:text-white">
+                                        Training
+                                        <u class="text-red-600">Courses</u>
+                                    </h2>
+
+
+                                    <div>
+
+                                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            type="button">Select Course<svg class="w-2.5 h-2.5 ml-2.5"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 10 6">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                            </svg>
+                                        </button>
+
+                                        <!-- Dropdown menu -->
+                                        <div id="dropdown"
+                                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                                aria-labelledby="dropdownDefaultButton">
+                                                <li>
+                                                    @foreach ($courses as $course_item)
+                                                        <a href="{{ route('academy.view', $course_item->id) }}"
+                                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                            {{ $course_item->name }}
+                                                        </a>
+                                                    @endforeach
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+                                        <h2
+                                            class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">
+                                            {{ $course->name }}
+                                        </h2>
+                                        <p
+                                            class="mb-4 text-xl font-extrabold leading-none text-gray-900 md:text-2xl dark:text-white">
+                                            RM
+                                            {{ $course->fee }}
+                                        </p>
+                                        <dl>
+                                            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+                                                Course
+                                                Content</dt>
+                                            <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
+                                                {!! $course->contents !!}
+                                            </dd>
+                                        </dl>
+                                        <dl class="flex items-center space-x-6">
+                                            <div>
+                                                <dt
+                                                    class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+                                                    Date
+                                                </dt>
+
+                                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
+                                                    {{ Carbon\Carbon::parse($course->date_start)->format('d F Y') .
+                                                        ' - ' .
+                                                        Carbon\Carbon::parse($course->date_end)->format('d F Y') }}
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                        <dl>
+                                            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
+                                                Time</dt>
+                                            <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
+                                                {{ Carbon\Carbon::parse($course->started_at)->format('H:i A') .
+                                                    ' - ' .
+                                                    Carbon\Carbon::parse($course->ended_at)->format('H:i A') }}
+                                            </dd>
+                                        </dl>
+                                        <div class="flex items-center space-x-4">
+                                            <a href="{{ route('course.register-selected', $course->id) }}"
+                                                type="button"
+                                                class="mx-auto text-white inline-flex items-center bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor"
+                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                                    </path>
+                                                    <path fill-rule="evenodd"
+                                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                Register
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
 
@@ -111,7 +214,8 @@
                             <div class="mb-12">
                                 <h2 class=" text-center text-xl font-bold text-grey-800 dark:text-white">
                                     Institut Kemahiran Mara (IKM)
-                                    <h3 class="mb-6 font-semibold text-sm text-gray-800 dark:text-white">Practical Power
+                                    <h3 class="mb-6 font-semibold text-sm text-gray-800 dark:text-white">Practical
+                                        Power
                                         Transformer
                                         (Testing & Maintenance)</h3>
                                 </h2>
@@ -119,15 +223,18 @@
 
                                     <div class="block">
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/ikm1.jpg" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/ikm1.jpg') }}"
+                                            alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/ikm2.jpg" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/ikm2.jpg') }}"
+                                            alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/ikm3.jpg" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/ikm3.jpg') }}"
+                                            alt="image description">
                                     </div>
                                 </div>
 
@@ -143,15 +250,18 @@
 
                                     <div class="block">
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/adtec1.PNG" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/adtec1.PNG') }}"
+                                            alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/adtec2.PNG" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/adtec2.PNG') }}"
+                                            alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/adtec3.JPG" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/adtec3.JPG') }}"
+                                            alt="image description">
                                     </div>
                                 </div>
 
@@ -167,15 +277,18 @@
 
                                     <div class="block">
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/ilp1.JPG" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/ilp1.jpg') }}"
+                                            alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/ilp2.jpg" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/ilp2.jpg') }}"
+                                            alt="image description">
                                     </div>
                                     <div>
                                         <img class="object-cover h-48 w-96 rounded-lg"
-                                            src="assets/img/completed-course/ilp3.jpg" alt="image description">
+                                            src="{{ asset('assets/img/completed-course/ilp3.jpg') }}"
+                                            alt="image description">
                                     </div>
                                 </div>
 
