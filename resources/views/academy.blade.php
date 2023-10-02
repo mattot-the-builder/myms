@@ -157,7 +157,7 @@
                                             </dd>
                                         </dl>
                                         <dl class="flex items-center space-x-6">
-                                            <div>
+                                            <div class="w-full">
                                                 <dt
                                                     class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
                                                     Date
