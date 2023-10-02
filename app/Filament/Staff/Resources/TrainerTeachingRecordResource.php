@@ -44,10 +44,6 @@ class TrainerTeachingRecordResource extends Resource
                 Tables\Columns\TextColumn::make('course.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->label('Trainer')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('clock_in')
                     ->dateTime()
                     ->sortable(),
