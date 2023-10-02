@@ -25,12 +25,10 @@ class TrainerTeachingRecordResource extends Resource
             ->schema([
                 Forms\Components\Select::make('course_id')
                     ->relationship('course', 'name')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
                 Forms\Components\TextInput::make('user_id')
                     ->default(auth()->user()->id)
                     ->readOnly()
-                    ->hidden()
                     ->required(),
                 Forms\Components\DateTimePicker::make('clock_in')
                     ->required(),

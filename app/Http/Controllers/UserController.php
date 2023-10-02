@@ -28,7 +28,7 @@ class UserController extends Controller
     {
 
         if (auth()->user()->courseRegistrations()) {
-            $course_registrations = auth()->user()->courseRegistrations()->latest()->simplePaginate(5);
+            $course_registrations = auth()->user()->courseRegistrations()->latest()->simplePaginate(10);
             return view('dashboard', compact('course_registrations'));
         } else {
             return view('dashboard');
