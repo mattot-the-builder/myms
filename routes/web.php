@@ -20,7 +20,7 @@ use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('health', HealthCheckResultsController::class);
+Route::get('health', HealthCheckResultsController::class)->middleware('admin');
 
 Route::get('/sitemap', function () {
     SitemapGenerator::create('https://myms.co')->writeToFile('sitemap.xml');
