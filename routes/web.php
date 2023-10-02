@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Spatie\Sitemap\SitemapGenerator;
 
+use Spatie\Health\Http\Controllers\HealthCheckResultsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +20,7 @@ use Spatie\Sitemap\SitemapGenerator;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('health', HealthCheckResultsController::class);
 
 Route::get('/sitemap', function () {
     SitemapGenerator::create('https://myms.co')->writeToFile('sitemap.xml');
