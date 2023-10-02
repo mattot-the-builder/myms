@@ -466,7 +466,7 @@
                                                 src="assets/img/experience3.jpg" alt="image description">
                                             <figcaption
                                                 class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
-                                                Testing & calibration of relay protection</figcaption>
+                                                Testing & calibration of protection relay </figcaption>
                                         </div>
                                     </div>
                                 </div>
