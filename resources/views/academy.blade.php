@@ -13,10 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Styles -->
     @livewireStyles
 
     <style>
@@ -98,7 +95,7 @@
                         Download List of Courses
                     </a>
                     <div x-show="show">
-                        <livewire:training-course />
+                        <livewire:training-course :courses="$courses" />
                     </div>
                 </div>
 
@@ -193,11 +190,11 @@
 
         @stack('modals')
 
-        @livewireScripts
-
-        <script src="{{ asset('assets/js/script.js') }}"></script>
-
     </div>
+
+    @livewireScripts
+
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 
 <footer class="bg-white dark:bg-gray-900 p-3">

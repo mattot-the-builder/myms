@@ -34,6 +34,7 @@ class TrainingCourse extends Component
         }
     }
 
+
     public function render()
     {
         return view('livewire.training-course');
@@ -50,5 +51,6 @@ class TrainingCourse extends Component
         $this->course_date_end = $course->date_end;
         $this->course_started_at = $course->started_at;
         $this->course_ended_at = $course->ended_at;
+        // dd($course);
     }
 }

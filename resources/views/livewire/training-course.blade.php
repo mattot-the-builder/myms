@@ -1,5 +1,4 @@
 <section class="my-12 bg-white dark:bg-gray-800 px-6 rounded-md lg:rounded-lg py-12 text-center" id="courses">
-
     <div class="flex justify-center">
         <div class="max-w-[700px] text-center">
             <h2 class="mb-6 text-center text-3xl font-bold text-grey-800 dark:text-white">
@@ -7,20 +6,22 @@
                 <u class="text-red-600">Courses</u>
             </h2>
             <div>
-                <label for="course_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
+                <label for="course_id"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
+
                 <select id="course_id" name="course_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     <option selected="" value="null" disabled>Select Course</option>
                     @foreach ($courses as $course)
-                        @if ($course->id == $course_id)
-                            <option selected wire:click="setCourse({{ $course->id }})" value="{{ $course->id }}">
-                                {{ $course->name }}
-                            </option>
-                        @else
-                            <option wire:click="setCourse({{ $course->id }})" value="{{ $course->id }}">
-                                {{ $course->name }}
-                            </option>
-                        @endif
+                    @if ($course->id === $course_id)
+                    <option selected wire:click="setCourse({{ $course->id }})" value="{{ $course->id }}">
+                        {{ $course->name }}
+                    </option>
+                    @else
+                    <option wire:click="setCourse({{ $course->id }})" value="{{ $course->id }}">
+                        {{ $course->name }}
+                    </option>
+                    @endif
                     @endforeach
 
                 </select>
@@ -42,16 +43,20 @@
                         <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Date</dt>
 
                         <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                            {{ Carbon\Carbon::parse($course_date_start)->format('d F Y') . ' - ' . Carbon\Carbon::parse($course_date_end)->format('d F Y') }}
+                            {{ Carbon\Carbon::parse($course_date_start)->format('d F Y') .
+                            ' - ' .
+                            Carbon\Carbon::parse($course_date_end)->format('d F Y') }}
                         </dd>
                     </div>
                 </dl>
-                <div>
+                <dl>
                     <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Time</dt>
                     <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">
-                        {{ Carbon\Carbon::parse($course_started_at)->format('H:i A') . ' - ' . Carbon\Carbon::parse($course_ended_at)->format('H:i A') }}
+                        {{ Carbon\Carbon::parse($course_started_at)->format('H:i A') .
+                        ' - ' .
+                        Carbon\Carbon::parse($course_ended_at)->format('H:i A') }}
                     </dd>
-                </div>
+                </dl>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('course.register-selected', $course_id) }}" type="button"
                         class="mx-auto text-white inline-flex items-center bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
@@ -68,4 +73,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>

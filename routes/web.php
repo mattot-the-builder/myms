@@ -39,7 +39,10 @@ Route::post('/career', [UserController::class, 'storeCareer'])->name('career.sto
 Route::get('/resume/{id?}', [UserController::class, 'viewResume'])->name('resume.view');
 
 Route::get('/dashboard', [UserController::class, 'indexCourseRegistration'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::view('/academy', 'academy')->name('academy');
+Route::get('/academy', function () {
+    $courses = App\Models\Course::all();
+    return view('academy', compact('courses'));
+})->name('academy');
 Route::view('/engineering', 'engineering')->name('engineering');
 
 Route::middleware('auth')->group(function () {
